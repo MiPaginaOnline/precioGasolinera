@@ -3,8 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Surtidor: precios de gasolina y diésel en toda España</title>
-<meta name="description" content="Mapa con el precio de cada gasolinera de España, actualizado. Verde si es barata, naranja si está en la media, roja si es cara.">
+<title>Surtidor | Comparador de precios de gasolina y diésel en España</title>
+<meta name="description" content="Compara precios de gasolina 95, gasolina 98 y diésel en gasolineras de España. Busca por ciudad o provincia, filtra estaciones y consulta los datos oficiales disponibles.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://mipaginaonline.github.io/precioGasolinera/">
+<meta name="theme-color" content="#222222">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Surtidor">
+<meta property="og:title" content="Surtidor | Comparador de precios de gasolina y diésel">
+<meta property="og:description" content="Busca gasolineras, compara precios de carburantes y consulta los datos oficiales disponibles en España.">
+<meta property="og:url" content="https://mipaginaonline.github.io/precioGasolinera/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Surtidor",
+  "url": "https://mipaginaonline.github.io/precioGasolinera/",
+  "description": "Herramienta gratuita para consultar y comparar precios de carburantes en gasolineras de España.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "inLanguage": "es-ES",
+  "isAccessibleForFree": true
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,7 +39,7 @@
   --peek:132px;
 }
 *{box-sizing:border-box}
-html,body{height:100%;margin:0}
+html,body{min-height:100%;margin:0}
 body{font-family:'Schibsted Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;background:#dfe5ea}
 button,select,input{font:inherit;color:inherit}
 button{cursor:pointer}
@@ -177,9 +199,52 @@ table.fu tr.sel td{font-weight:800}
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation-duration:2.5s!important}
 }
+
+
+/* ---------- contenido editorial y SEO ---------- */
+#app-shell{height:100vh;height:100dvh;min-height:500px;position:relative;isolation:isolate}
+#seoContent{position:relative;background:#fff;color:#16212c;z-index:1;padding:clamp(28px,5vw,64px) 20px 0;line-height:1.7}
+.seo-inner{max-width:1060px;margin:0 auto}
+.seo-hero{padding:0 0 34px;border-bottom:1px solid #e2e7ec}
+.seo-kicker{margin:0 0 10px;color:#426177;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+#seoContent h1{max-width:850px;margin:0 0 18px;font-size:clamp(30px,5vw,48px);line-height:1.12;letter-spacing:-.04em}
+#seoContent h2{margin:0 0 12px;font-size:clamp(22px,3vw,29px);line-height:1.2;letter-spacing:-.025em}
+#seoContent h3{margin:0 0 8px;font-size:18px;line-height:1.3}
+#seoContent p{max-width:780px;margin:0 0 14px;color:#475563;font-size:16px}
+.seo-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.seo-button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 15px;border:1px solid #16212c;border-radius:10px;background:#16212c;color:#fff;text-decoration:none;font-weight:700}
+.seo-button.secondary{background:#fff;color:#16212c}
+.seo-section{padding:34px 0;border-bottom:1px solid #e2e7ec;scroll-margin-top:16px}
+.seo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px}
+.seo-card{padding:18px;border:1px solid #e2e7ec;border-radius:14px;background:#fafbfc}
+.seo-card p{font-size:14.5px;margin-bottom:0}
+.seo-number{display:inline-grid;place-items:center;width:30px;height:30px;margin-bottom:12px;border-radius:9px;background:#e8edf2;font-weight:800}
+.seo-note{padding:14px 16px;border-left:3px solid #8b9cac;background:#f5f7f9;border-radius:0 10px 10px 0}
+.seo-note p{font-size:14px;margin:0}
+.saving-calculator{max-width:620px;margin-top:18px;padding:20px;border:1px solid #e2e7ec;border-radius:16px;background:#fafbfc}
+.saving-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.saving-fields label{display:block;font-size:13px;font-weight:700;color:#475563}
+.saving-fields input{display:block;width:100%;height:44px;margin-top:6px;padding:0 10px;border:1px solid #cfd7df;border-radius:9px;background:#fff;font:inherit;color:#16212c}
+.saving-result{margin:16px 0 0!important;padding:12px 14px;border-radius:10px;background:#e8f4ed;color:#145d35!important;font-weight:800}
+.seo-faq details{padding:15px 0;border-bottom:1px solid #e2e7ec}
+.seo-faq summary{cursor:pointer;font-weight:700;color:#16212c}
+.seo-faq details p{margin:10px 0 0;font-size:14.5px}
+#seoFooter{padding:24px 0 34px;display:flex;align-items:flex-start;justify-content:space-between;gap:22px;flex-wrap:wrap}
+#seoFooter p{font-size:13px;margin:0}
+.seo-footer-links{display:flex;gap:14px;flex-wrap:wrap}
+.seo-footer-links a{font-size:13px;color:#273d50;text-underline-offset:3px}
+@media(max-width:760px){
+  #app-shell{min-height:540px}
+  #seoContent{padding:30px 16px 0}
+  .seo-grid{grid-template-columns:1fr}
+  .saving-fields{grid-template-columns:1fr}
+  .saving-calculator{padding:16px}
+}
+
 </style>
 </head>
 <body>
+<div id="app-shell">
 <div id="map" aria-label="Mapa de gasolineras de España"></div>
 
 <header id="bar">
@@ -200,6 +265,7 @@ table.fu tr.sel td{font-weight:800}
     <p>La página consulta los precios al abrirla y los renueva sola cada pocos minutos. Arriba verás la fecha y hora del último dato publicado.</p>
     <p>El color de cada punto va de verde (barata) a rojo (cara). Por defecto compara las gasolineras de la zona que estás viendo; también puedes compararlas con toda España.</p>
     <p>Confirma siempre el precio en el surtidor: puede haber cambiado desde la última comunicación de la estación.</p>
+    <p><a href="sobre-nosotros.html">Más información sobre Surtidor</a> · <a href="politica-privacidad.html">Privacidad</a></p>
   </div>
 </div>
 
@@ -255,6 +321,78 @@ table.fu tr.sel td{font-weight:800}
 <div id="status"><div class="card" id="statusCard"><div class="spin" aria-hidden="true"></div><p>Cargando los precios de las gasolineras…</p></div></div>
 <div id="toast" role="status"></div>
 <noscript><p style="position:fixed;top:20px;left:20px;background:#fff;padding:14px;border-radius:10px">Esta página necesita JavaScript para mostrar el mapa.</p></noscript>
+</div><!-- /app-shell -->
+
+<main id="seoContent">
+  <div class="seo-inner">
+    <section class="seo-hero" aria-labelledby="seoTitle">
+      <p class="seo-kicker">Comparador gratuito de carburantes</p>
+      <h1 id="seoTitle">Compara precios de gasolina y diésel en España</h1>
+      <p>Surtidor es una herramienta para consultar precios comunicados por estaciones de servicio en España y compararlos por combustible y zona. Puedes buscar una localidad, acercarte en el mapa, filtrar por provincia o marca y revisar una lista de estaciones ordenada por precio cuando haya datos disponibles.</p>
+      <div class="seo-links">
+        <a class="seo-button" href="#app-shell">Abrir el mapa</a>
+        <a class="seo-button secondary" href="#como-funciona">Cómo utilizar el comparador</a>
+      </div>
+    </section>
+
+    <section class="seo-section" id="como-funciona" aria-labelledby="howTitle">
+      <h2 id="howTitle">Cómo encontrar una gasolinera más económica</h2>
+      <p>Comparar los precios de estaciones cercanas puede ayudarte a decidir dónde repostar. Los resultados dependen del combustible seleccionado, de la zona visible y de los datos publicados para cada estación.</p>
+      <div class="seo-grid">
+        <article class="seo-card"><span class="seo-number">1</span><h3>Busca tu ubicación</h3><p>Escribe una ciudad, una provincia o un código postal en el buscador. También puedes utilizar el botón de ubicación si das permiso a tu navegador.</p></article>
+        <article class="seo-card"><span class="seo-number">2</span><h3>Elige el combustible</h3><p>Selecciona gasolina 95, gasolina 98, gasóleo A o gasóleo premium. Comprueba que el tipo elegido coincide con el que utiliza tu vehículo.</p></article>
+        <article class="seo-card"><span class="seo-number">3</span><h3>Compara y verifica</h3><p>Revisa los precios, los filtros y la distancia antes de decidir. El importe mostrado puede cambiar y debe confirmarse en la propia estación.</p></article>
+      </div>
+    </section>
+
+    <section class="seo-section" id="colores" aria-labelledby="colorsTitle">
+      <h2 id="colorsTitle">Qué significan los colores del mapa</h2>
+      <p>Los colores sirven para comparar visualmente los precios del combustible seleccionado. El verde representa precios relativamente bajos dentro del grupo comparado; los tonos intermedios señalan valores medios y el rojo identifica precios relativamente altos. No indican la calidad del carburante, la calidad del servicio ni una garantía de que una estación sea la más barata de toda España.</p>
+      <div class="seo-note"><p><strong>Consejo:</strong> elige «Toda España» si quieres usar el conjunto nacional como referencia. Si comparas «La zona del mapa», los colores reflejan los precios de las estaciones que aparecen en esa vista. La lista de resultados también depende del zoom y de los filtros aplicados.</p></div>
+    </section>
+
+    <section class="seo-section" id="calculadora" aria-labelledby="calcTitle">
+      <h2 id="calcTitle">Calculadora de ahorro al repostar</h2>
+      <p>Calcula la diferencia aproximada entre dos precios para la cantidad de combustible que quieras comprar. Introduce los precios por litro que estás viendo; los valores iniciales son solo un ejemplo y no representan precios actuales.</p>
+      <div class="saving-calculator">
+        <div class="saving-fields">
+          <label for="litres">Litros que vas a repostar<input id="litres" type="number" min="1" max="2000" step="1" value="50" inputmode="decimal"></label>
+          <label for="priceHigh">Precio más alto (€/litro)<input id="priceHigh" type="number" min="0.01" max="10" step="0.001" value="1.650" inputmode="decimal"></label>
+          <label for="priceLow">Precio más bajo (€/litro)<input id="priceLow" type="number" min="0.01" max="10" step="0.001" value="1.550" inputmode="decimal"></label>
+        </div>
+        <p class="saving-result" id="savingResult" aria-live="polite">Diferencia estimada: 5,00 € por repostaje.</p>
+      </div>
+      <p style="margin-top:12px;font-size:13px">El cálculo no incluye la distancia, el tiempo ni el coste del desplazamiento hasta la otra gasolinera. Si tienes que desviarte mucho de tu ruta, tenlo en cuenta antes de elegir.</p>
+    </section>
+
+    <section class="seo-section" id="datos" aria-labelledby="dataTitle">
+      <h2 id="dataTitle">De dónde salen los precios y cuándo se actualizan</h2>
+      <p>El comparador consulta información del servicio de precios de carburantes del Ministerio para la Transición Ecológica y el Reto Demográfico. La información de precios la comunican las estaciones de servicio mediante los mecanismos oficiales; por eso puede haber diferencias entre el dato publicado y el importe que encuentres al llegar.</p>
+      <p>La página intenta cargar los datos al abrirse y permite volver a consultarlos con el botón «Actualizar». La fecha que aparece en la interfaz depende de la respuesta disponible en el servicio de origen. Si la fuente no responde temporalmente, los datos anteriores pueden seguir visibles. Comprueba la fecha de los datos y confirma el precio directamente en el surtidor antes de repostar.</p>
+      <p>La herramienta es un proyecto independiente y no es una página oficial del Ministerio ni está afiliada a él. Puedes consultar la <a href="https://energia.serviciosmin.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/" target="_blank" rel="noopener noreferrer">fuente oficial de datos de carburantes</a>.</p>
+    </section>
+
+    <section class="seo-section seo-faq" id="preguntas" aria-labelledby="faqTitle">
+      <h2 id="faqTitle">Preguntas frecuentes sobre el precio de los carburantes</h2>
+      <details><summary>¿El mapa muestra siempre el precio exacto de la gasolinera?</summary><p>No necesariamente. Muestra la información disponible en la fuente consultada, pero el precio puede cambiar después de la publicación o de la última consulta. Confirma siempre el importe en la estación.</p></details>
+      <details><summary>¿Cómo puedo encontrar los precios más bajos de mi provincia?</summary><p>Busca tu localidad y utiliza el filtro de provincia. Selecciona el combustible que necesitas y revisa la lista de las estaciones mostradas. El resultado puede variar si cambias la zona del mapa, la marca u otros filtros.</p></details>
+      <details><summary>¿Qué diferencia hay entre gasolina 95 y gasolina 98 en este comparador?</summary><p>Son tipos de gasolina diferentes, con distintos índices de octano. El comparador permite consultar sus precios por separado; utiliza el combustible recomendado para tu vehículo y no elijas solo por el precio.</p></details>
+      <details><summary>¿Los colores verde, naranja y rojo son una clasificación oficial?</summary><p>No. Son una ayuda visual del comparador para mostrar la posición relativa de los precios dentro del ámbito de comparación seleccionado.</p></details>
+      <details><summary>¿Usar Surtidor tiene algún coste?</summary><p>La consulta del mapa está planteada como una herramienta gratuita. Pueden aplicarse los costes habituales de conexión a Internet de tu proveedor.</p></details>
+      <details><summary>¿Qué hago si una gasolinera aparece con un precio que no coincide?</summary><p>Ten en cuenta la fecha de los datos y comprueba el precio en la estación. La información puede no haberse actualizado todavía o haber cambiado desde que se comunicó.</p></details>
+    </section>
+
+    <footer id="seoFooter">
+      <p>© <span id="currentYear">2026</span> Surtidor. Herramienta independiente de comparación de carburantes.</p>
+      <nav class="seo-footer-links" aria-label="Información del sitio">
+        <a href="sobre-nosotros.html">Sobre Surtidor</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="politica-privacidad.html">Política de privacidad</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+      </nav>
+    </footer>
+  </div>
+</main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
@@ -886,5 +1024,34 @@ syncTheme();
 init();
 })();
 </script>
+
+<script>
+(() => {
+  const litres = document.getElementById('litres');
+  const high = document.getElementById('priceHigh');
+  const low = document.getElementById('priceLow');
+  const output = document.getElementById('savingResult');
+  const year = document.getElementById('currentYear');
+  if (year) year.textContent = new Date().getFullYear();
+  if (!litres || !high || !low || !output) return;
+  const euro = n => n.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' });
+  function calculate() {
+    const l = Number(litres.value), h = Number(high.value), lo = Number(low.value);
+    if (![l, h, lo].every(Number.isFinite) || l <= 0 || h <= 0 || lo <= 0 || l > 2000 || h > 10 || lo > 10) {
+      output.textContent = 'Introduce litros y precios válidos para calcular la diferencia.';
+      return;
+    }
+    const difference = Math.max(0, (h - lo) * l);
+    if (h < lo) {
+      output.textContent = 'El segundo precio es más alto. Invierte los precios para calcular el ahorro estimado.';
+      return;
+    }
+    output.textContent = 'Diferencia estimada: ' + euro(difference) + ' por repostaje.';
+  }
+  [litres, high, low].forEach(el => el.addEventListener('input', calculate));
+  calculate();
+})();
+</script>
+
 </body>
 </html>
