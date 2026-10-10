@@ -23,10 +23,27 @@ button,select,input{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:3px solid #2b6cff;outline-offset:2px}
 #map{position:absolute;inset:0;background:#dfe5ea;--cn-fs:12px}
-body.dark #map{background:#262626}
+
+/* ---------- barra superior ---------- */
+#bar{position:absolute;z-index:1200;top:0;left:0;right:0;height:56px;background:#222;color:#fff;display:flex;align-items:center;gap:18px;padding:0 16px;box-shadow:0 2px 10px rgba(0,0,0,.35)}
+.logo{flex:none;font-weight:800;font-size:19px;letter-spacing:-.02em}
+.tabs{display:flex;gap:4px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+#bar .chip{flex:none;height:36px;padding:0 15px;border:0;border-radius:8px;background:transparent;color:#c9ced3;font-weight:600;font-size:14px;white-space:nowrap}
+#bar .chip:hover{background:#383838;color:#fff}
+#bar .chip[aria-pressed=true]{background:#fff;color:#16212c}
+.barR{display:flex;align-items:center;gap:12px;flex:none;font-size:12.5px;color:#aeb4ba}
+#aboutBtn{height:34px;padding:0 12px;border:1.5px solid #555;border-radius:8px;background:transparent;color:#fff;font-weight:600;font-size:13px;white-space:nowrap}
+#aboutBtn:hover{border-color:#fff}
+#about{position:fixed;inset:0;z-index:3000;display:grid;place-items:center;background:rgba(0,0,0,.5);padding:20px}
+#about .card{position:relative;max-width:460px;max-height:86vh;overflow:auto;background:#fff;border-radius:16px;padding:24px 24px 20px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+#about h2{margin:0 30px 10px 0;font-size:20px;font-weight:800;letter-spacing:-.01em}
+#about p{margin:0 0 10px;font-size:14.5px;line-height:1.55}
+#aboutX{position:absolute;top:10px;right:10px;width:36px;height:36px;border:0;border-radius:50%;background:var(--soft);font-size:22px;line-height:1}
+.leaflet-top.leaflet-right{margin-top:56px}
 
 /* ---------- panel ---------- */
-#panel{position:absolute;z-index:1100;left:16px;top:16px;bottom:16px;width:380px;background:var(--white);border-radius:18px;box-shadow:0 12px 40px rgba(22,33,44,.28),0 0 0 1px rgba(22,33,44,.08);display:flex;flex-direction:column;overflow:hidden}
+#panel{position:absolute;z-index:1100;left:16px;top:72px;bottom:16px;width:380px;background:var(--white);border-radius:18px;box-shadow:0 12px 40px rgba(22,33,44,.28),0 0 0 1px rgba(22,33,44,.08);display:flex;flex-direction:column;overflow:hidden}
 .top{position:relative;z-index:3;padding:18px 16px 14px;border-bottom:1px solid var(--line);background:var(--white)}
 .brand{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px}
 .brand h1{margin:0;font-size:24px;font-weight:800;letter-spacing:-.025em}
@@ -107,12 +124,6 @@ body.dark #map{background:#262626}
 
 .pill{position:absolute;transform:translate(-50%,calc(-100% - 7px));padding:3px 8px;border-radius:8px;font-weight:700;font-size:12.5px;line-height:1.25;font-variant-numeric:tabular-nums;white-space:nowrap;border:1.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35);cursor:pointer}
 .pill::after{content:"";position:absolute;left:50%;bottom:-5px;width:8px;height:8px;background:inherit;transform:translateX(-50%) rotate(45deg);border-right:1.5px solid #fff;border-bottom:1.5px solid #fff}
-.bestp{position:absolute;transform:translate(-50%,calc(-100% - 11px));display:flex;flex-direction:column;align-items:center;gap:1px;padding:5px 12px 6px;border-radius:13px;border:3px solid #fff;box-shadow:0 0 0 2px rgba(22,33,44,.6),0 8px 18px rgba(0,0,0,.45);white-space:nowrap;cursor:pointer;line-height:1.1;font-variant-numeric:tabular-nums}
-.bestp::after{content:"";position:absolute;left:50%;bottom:-9px;width:12px;height:12px;background:inherit;transform:translateX(-50%) rotate(45deg);border-right:3px solid #fff;border-bottom:3px solid #fff}
-.bestp b{font-size:18px;font-weight:800;letter-spacing:-.01em}
-.bestp small{font-size:11.5px;font-weight:700}
-.bestp.c{padding:3px 9px 4px;border-radius:11px}
-.bestp.c b{font-size:15px}
 
 .leaflet-popup-content-wrapper{border-radius:16px;padding:0;box-shadow:0 14px 40px rgba(22,33,44,.35)}
 .leaflet-popup-content{margin:0;width:auto!important}
@@ -140,8 +151,6 @@ table.fu tr.sel td{font-weight:800}
 .jump{display:flex;flex-direction:column;gap:6px;margin-top:8px}
 .jump button{height:34px;padding:0 11px;border:0;border-radius:9px;background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.4);font-weight:600;font-size:13px}
 .jump button:hover{background:#f2f4f6}
-body.dark .leaflet-control-attribution{background:rgba(30,30,30,.75)!important;color:#aaa}
-body.dark .leaflet-control-attribution a{color:#ccc}
 
 /* ---------- estado y avisos ---------- */
 #status{position:absolute;inset:0;z-index:1050;display:grid;place-items:center;background:rgba(223,229,234,.75);padding:20px}
@@ -154,6 +163,8 @@ body.dark .leaflet-control-attribution a{color:#ccc}
 .hidden{display:none!important}
 
 @media (max-width:760px){
+  .logo,#upd{display:none}
+  #bar{gap:8px;padding:0 8px}
   #panel{left:0;right:0;top:auto;bottom:0;width:auto;height:82vh;height:82dvh;border-radius:20px 20px 0 0;transform:translateY(calc(100% - var(--peek)));transition:transform .3s ease}
   #panel.open{transform:none}
   .brand{display:none}
@@ -171,13 +182,30 @@ body.dark .leaflet-control-attribution a{color:#ccc}
 <body>
 <div id="map" aria-label="Mapa de gasolineras de España"></div>
 
+<header id="bar">
+  <div class="logo">Surtidor</div>
+  <nav class="tabs" id="chips" aria-label="Combustible">
+    <button class="chip" data-fuel="precio gasolina 95 e5" aria-pressed="true">Gasolina 95</button>
+    <button class="chip" data-fuel="precio gasolina 98 e5" aria-pressed="false">Gasolina 98</button>
+    <button class="chip" data-fuel="precio gasoleo a" aria-pressed="false">Gasóleo A</button>
+    <button class="chip" data-fuel="precio gasoleo premium" aria-pressed="false">Gasóleo premium</button>
+  </nav>
+  <div class="barR"><span id="upd">Precios de carburantes</span><button id="aboutBtn" type="button">Sobre este mapa</button></div>
+</header>
+<div id="about" class="hidden" role="dialog" aria-modal="true" aria-labelledby="aboutT">
+  <div class="card">
+    <button id="aboutX" type="button" aria-label="Cerrar">×</button>
+    <h2 id="aboutT">Sobre este mapa</h2>
+    <p>Muestra el precio de los carburantes en las gasolineras de España. Los datos son del Ministerio para la Transición Ecológica y el Reto Demográfico, que los recibe de las propias estaciones de servicio.</p>
+    <p>La página consulta los precios al abrirla y los renueva sola cada pocos minutos. Arriba verás la fecha y hora del último dato publicado.</p>
+    <p>El color de cada punto va de verde (barata) a rojo (cara). Por defecto compara las gasolineras de la zona que estás viendo; también puedes compararlas con toda España.</p>
+    <p>Confirma siempre el precio en el surtidor: puede haber cambiado desde la última comunicación de la estación.</p>
+  </div>
+</div>
+
 <aside id="panel" aria-label="Buscador y filtros">
   <div class="top">
     <button class="grab" id="grab" aria-label="Mostrar u ocultar filtros y lista" aria-expanded="false"></button>
-    <div class="brand">
-      <h1>Surtidor</h1>
-      <p id="upd">Precios de carburantes</p>
-    </div>
     <div class="search">
       <div class="sbox">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -195,14 +223,8 @@ body.dark .leaflet-control-attribution a{color:#ccc}
   </div>
 
   <div class="scroll" id="scroll">
-    <div class="lbl">Combustible</div>
-    <div class="chips" id="chips">
-      <button class="chip" data-fuel="precio gasolina 95 e5" aria-pressed="true">Gasolina 95</button>
-      <button class="chip" data-fuel="precio gasolina 98 e5" aria-pressed="false">Gasolina 98</button>
-      <button class="chip" data-fuel="precio gasoleo a" aria-pressed="false">Diésel</button>
-      <button class="chip" data-fuel="precio gasoleo premium" aria-pressed="false">Diésel premium</button>
-    </div>
-    <div style="margin-top:8px"><select class="sel" id="more" aria-label="Otro combustible"><option value="">Otro combustible…</option></select></div>
+    <div class="lbl">Otro combustible</div>
+    <div><select class="sel" id="more" aria-label="Otro combustible"><option value="">Otro combustible…</option></select></div>
 
     <div class="lbl">Dónde y qué marca</div>
     <div class="two">
@@ -308,13 +330,12 @@ const MAIN = FUELS.slice(0, 4).map(f => f.id);
 const unitOf = id => '€/' + (FUEL[id].unit || 'l');
 
 /* ================== estado ================== */
-const DARK_Z = 8;       // a partir de este zoom el mapa pasa a estilo oscuro de calles
 const NAMES_Z = 8;      // a partir de este zoom desaparecen los nombres de comunidades
 const S = {
   fuel: FUELS[0].id, prov: '', brand: '', only24: false, restricted: false, scope: 'view',
   stations: [], byId: new Map(), filtered: [], inView: [], natPrices: [], median: null,
   lo: 0, hi: 0, provs: [], brands: [], munis: [], userPos: null, selected: null, listLimit: 15,
-  ready: false, lastZ: null, fecha: '', loadedAt: 0, cityBest: new Map(), cityN: new Map(), dark: false, first: true
+  ready: false, lastZ: null, fecha: '', loadedAt: 0, first: true
 };
 const tOf = p => S.hi > S.lo ? clamp((p - S.lo) / (S.hi - S.lo), 0, 1) : 0;
 const ixOf = p => Math.round(tOf(p) * 100);
@@ -326,16 +347,12 @@ L.control.zoom({ position: 'topright', zoomInTitle: 'Acercar', zoomOutTitle: 'Al
 ['ccaa', 'carto', 'cnames'].forEach(n => map.createPane(n));
 
 const ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>';
-const TILES = {
-  light: L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 19, attribution: ATTR }),
-  labels: L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 19, pane: 'carto' }),
-  dark: L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 19, attribution: ATTR })
-};
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 19, attribution: ATTR }).addTo(map);
 
 /* comunidades autónomas: líneas + nombres */
 const ccaaLayer = L.geoJSON(CCAA, {
   pane: 'ccaa', renderer: L.svg({ pane: 'ccaa' }), interactive: false,
-  style: { color: '#4c5967', weight: 1.6, opacity: .95, fillColor: '#ffffff', fillOpacity: .28, lineJoin: 'round' }
+  style: { color: '#6f7c89', weight: 1.6, opacity: .85, fillOpacity: 0, lineJoin: 'round' }
 });
 const namesLayer = L.layerGroup();
 const LABEL_AT = { 'C. Valenciana': [39.35, -0.95], 'Canarias': [29.45, -15.6], 'Baleares': [38.55, 2.95] };
@@ -383,18 +400,17 @@ function regionAt(ll) {
 }
 function fitRegion(r) {
   const b = r.bbox;
-  map.fitBounds([[b[1], b[0]], [b[3], b[2]]], { paddingTopLeft: [isMobile() ? 20 : 420, 20], paddingBottomRight: [20, isMobile() ? 150 : 20], animate: !reduce });
+  map.fitBounds([[b[1], b[0]], [b[3], b[2]]], { paddingTopLeft: [isMobile() ? 20 : 420, 76], paddingBottomRight: [20, isMobile() ? 150 : 20], animate: !reduce });
 }
 
 const canvas = L.canvas({ padding: 0.4, tolerance: 7 });
 const dots = L.layerGroup().addTo(map);
 const pills = L.layerGroup().addTo(map);
-const bests = L.layerGroup().addTo(map);
 const ring = L.circleMarker([0, 0], { radius: 14, color: '#16212c', weight: 3, fill: false, interactive: false });
 const me = L.circleMarker([0, 0], { radius: 8, color: '#fff', weight: 3, fillColor: '#2563eb', fillOpacity: 1, interactive: false });
 const popup = L.popup({
   minWidth: 280, maxWidth: 340, closeButton: true, autoPanPadding: [20, 20],
-  autoPanPaddingTopLeft: isMobile() ? [20, 20] : [420, 20],
+  autoPanPaddingTopLeft: isMobile() ? [20, 76] : [420, 76],
   autoPanPaddingBottomRight: isMobile() ? [20, 150] : [20, 20]
 });
 map.on('popupclose', () => { S.selected = null; map.removeLayer(ring); });
@@ -403,32 +419,15 @@ map.on('click', e => {
   if (map.getZoom() < NAMES_Z) { const r = regionAt(e.latlng); if (r) fitRegion(r); }
 });
 
-/* tema: mapa político claro al alejar, calles oscuras al acercar */
+/* comunidades: líneas siempre; nombres solo con el mapa alejado */
 function syncTheme() {
-  const z = map.getZoom(), dark = z >= DARK_Z;
-  const first = S.dark === null;
-  if (dark !== S.dark || first) {
-    S.dark = dark; document.body.classList.toggle('dark', dark);
-    ring.setStyle({ color: dark ? '#ffffff' : '#16212c' });
-    if (!map.hasLayer(ccaaLayer)) ccaaLayer.addTo(map);   // las comunidades se ven siempre
-    if (dark) {
-      TILES.dark.addTo(map);
-      map.removeLayer(namesLayer);
-      setTimeout(() => { if (S.dark) { map.removeLayer(TILES.light); map.removeLayer(TILES.labels); } }, 350);
-    } else {
-      TILES.light.addTo(map); TILES.labels.addTo(map); namesLayer.addTo(map);
-      setTimeout(() => { if (!S.dark) map.removeLayer(TILES.dark); }, 350);
-    }
-  }
-  if (dark) {
-    ccaaLayer.setStyle({ color: '#9ecbff', weight: 2.2, opacity: .95, fillOpacity: 0, dashArray: '9 6' });
-  } else {
-    ccaaLayer.setStyle({ color: '#4c5967', weight: z <= 5 ? 1.5 : 2, opacity: .95, fillOpacity: .28, dashArray: null });
-    const fs = { 4: 10.5, 5: 12.5, 6: 15, 7: 17 }[z] || 17;
-    $('#map').style.setProperty('--cn-fs', fs + 'px');
-  }
+  const z = map.getZoom();
+  if (!map.hasLayer(ccaaLayer)) ccaaLayer.addTo(map);
+  if (z < NAMES_Z) { if (!map.hasLayer(namesLayer)) namesLayer.addTo(map); } else map.removeLayer(namesLayer);
+  ccaaLayer.setStyle({ color: '#6f7c89', weight: z <= 5 ? 1.4 : 1.8, opacity: .85, fillOpacity: 0, dashArray: z >= 7 ? '7 5' : null });
+  const fs = { 4: 10.5, 5: 12.5, 6: 15, 7: 17 }[z] || 17;
+  $('#map').style.setProperty('--cn-fs', fs + 'px');
 }
-S.dark = null;
 
 function radiusFor(z) {
   const R = { 4: 1.7, 5: 2.0, 6: 2.4, 7: 3.0, 8: 3.6, 9: 4.5, 10: 5.4, 11: 6.4, 12: 7.4, 13: 8.6 };
@@ -452,13 +451,13 @@ function robustBounds(list) {
 function fitTo(list, maxZoom = 14) {
   if (!list.length) return;
   map.fitBounds(robustBounds(list), {
-    paddingTopLeft: [isMobile() ? 20 : 420, 20],
+    paddingTopLeft: [isMobile() ? 20 : 420, 76],
     paddingBottomRight: [20, isMobile() ? 150 : 20],
     maxZoom, animate: !reduce
   });
 }
 function fitBox(b, maxZoom) {
-  map.fitBounds(b, { paddingTopLeft: [isMobile() ? 20 : 420, 20], paddingBottomRight: [20, isMobile() ? 150 : 20], maxZoom: maxZoom || 18, animate: !reduce });
+  map.fitBounds(b, { paddingTopLeft: [isMobile() ? 20 : 420, 76], paddingBottomRight: [20, isMobile() ? 150 : 20], maxZoom: maxZoom || 18, animate: !reduce });
 }
 const Jump = L.Control.extend({
   options: { position: 'topright' },
@@ -578,18 +577,10 @@ function refresh() {
   S.natPrices.sort((a, b) => a - b);
   S.median = S.natPrices.length ? S.natPrices[S.natPrices.length >> 1] : null;
   S.filtered = S.stations.filter(passes).sort((a, b) => b.prices[f] - a.prices[f]);
-  // la más barata de cada ciudad (entre las que cumplen los filtros)
-  S.cityBest = new Map(); S.cityN = new Map();
-  for (const s of S.filtered) {
-    S.cityN.set(s.ck, (S.cityN.get(s.ck) || 0) + 1);
-    const b = S.cityBest.get(s.ck);
-    if (!b || s.prices[f] < b.prices[f]) S.cityBest.set(s.ck, s);
-  }
   S.listLimit = 15;
   if (S.selected && !S.filtered.includes(S.selected)) map.closePopup();
   update(true);
 }
-const isBest = s => S.cityBest.get(s.ck) === s && (S.cityN.get(s.ck) || 0) >= 2;
 
 function update(rebuild) {
   if (!S.ready) return;
@@ -601,7 +592,7 @@ function update(rebuild) {
   if (rebuild) buildDots();
   else if (z !== S.lastZ || S.lo + '|' + S.hi !== prev) restyle(z !== S.lastZ);
   S.lastZ = z;
-  renderLegend(); drawPills(); drawBests(); renderList();
+  renderLegend(); drawPills(); renderList();
 }
 function buildDots() {
   dots.clearLayers();
@@ -645,7 +636,6 @@ function drawPills() {
   const z = map.getZoom(), n = S.inView.length;
   if (!((z >= 13 && n <= 250) || (z >= 11 && n <= 60))) return;
   for (const s of S.inView) {
-    if (isBest(s)) continue;
     const p = s.prices[S.fuel];
     L.marker([s.lat, s.lng], {
       icon: L.divIcon({ className: 'pill-icon', html: '<div class="pill" style="' + chipStyle(p) + '">' + fmt(p) + '</div>', iconSize: [0, 0] }),
@@ -653,33 +643,6 @@ function drawPills() {
     }).on('click', ev => { L.DomEvent.stopPropagation(ev); openStation(s); }).addTo(pills);
   }
 }
-/* la más barata de cada ciudad, bien grande */
-function drawBests() {
-  bests.clearLayers();
-  const z = map.getZoom();
-  const minN = z <= 5 ? 60 : z === 6 ? 35 : z === 7 ? 18 : z === 8 ? 9 : z === 9 ? 5 : 2;
-  const seen = new Set(), arr = [], vb = visibleBounds();
-  for (const s of S.inView) {
-    if (seen.has(s.ck)) continue;
-    const b = S.cityBest.get(s.ck), n = S.cityN.get(s.ck) || 0;
-    if (!b || n < minN) continue;
-    seen.add(s.ck);
-    if (vb.contains([b.lat, b.lng])) arr.push([b, n]);
-  }
-  arr.sort((a, b) => b[1] - a[1]);
-  const shown = arr.slice(0, z <= 7 ? 40 : 140);
-  const showName = z >= 9 || shown.length <= 24;
-  for (const [s] of shown) {
-    const p = s.prices[S.fuel];
-    const html = '<div class="bestp' + (showName ? '' : ' c') + '" style="' + chipStyle(p) + '">' +
-      (showName ? '<small>Más barata · ' + esc(s.mun) + '</small>' : '') + '<b>★ ' + fmt(p) + '</b></div>';
-    L.marker([s.lat, s.lng], {
-      icon: L.divIcon({ className: 'best-icon', html, iconSize: [0, 0] }),
-      zIndexOffset: 20000, keyboard: false
-    }).on('click', ev => { L.DomEvent.stopPropagation(ev); openStation(s); }).addTo(bests);
-  }
-}
-
 /* ================== lista ================== */
 function renderList() {
   const el = $('#list'), arr = S.inView.slice().sort((a, b) => a.prices[S.fuel] - b.prices[S.fuel]);
@@ -699,7 +662,7 @@ function renderList() {
     const ds = d == null ? '' : (d < 10 ? d.toFixed(1).replace('.', ',') : Math.round(d)) + ' km';
     return '<button class="it" data-id="' + esc(s.id) + '"><span class="pr" style="' + chipStyle(p) + '">' + fmt(p) + '</span>' +
       '<span class="nm"><b>' + esc(s.brand) + '</b><small>' + esc(s.addr ? s.addr + ', ' : '') + esc(s.mun) + '</small>' +
-      (isBest(s) ? '<em>★ La más barata de ' + esc(s.mun) + '</em>' : '') + '</span>' +
+      '</span>' +
       '<span class="ds">' + ds + '</span></button>';
   }).join('') + (arr.length > shown.length ? '<button class="more" id="moreBtn">Mostrar más</button>' : '');
 }
@@ -712,14 +675,6 @@ $('#list').addEventListener('click', e => {
 /* ================== ficha de la gasolinera ================== */
 function popupHTML(s) {
   const f = FUEL[S.fuel], p = s.prices[S.fuel], ix = ixOf(p), u = unitOf(S.fuel);
-  const same = S.filtered.filter(x => x.ck === s.ck);
-  const n = same.length;
-  let extra = '';
-  if (isBest(s)) extra = '<p class="star">★ Es la más barata de ' + esc(s.mun) + ' (' + n + ' gasolineras)</p>';
-  else if (n >= 3) {
-    const rank = same.filter(x => x.prices[S.fuel] < p).length + 1;
-    extra = '<p class="cmp" style="margin-top:10px">N.º <b>' + rank + '</b> de ' + n + ' en ' + esc(s.mun) + ' (de más barata a más cara).</p>';
-  }
   let cmp = '';
   if (S.median) {
     const d = S.median - p, cents = Math.abs(d * 100);
@@ -732,7 +687,7 @@ function popupHTML(s) {
   const rows = FUELS.filter(x => s.prices[x.id] != null).map(x =>
     '<tr class="' + (x.id === S.fuel ? 'sel' : '') + '"><td>' + esc(x.label) + '</td><td>' + fmt(s.prices[x.id]) + ' ' + unitOf(x.id) + '</td></tr>').join('');
   const place = [s.addr, [s.cp, s.mun].filter(Boolean).join(' ')].filter(Boolean).join(', ') + (s.prov && s.prov !== s.mun ? ' (' + s.prov + ')' : '');
-  return '<div class="pc"><h3>' + esc(s.brand) + '</h3><p class="ad">' + esc(place) + '</p>' + extra +
+  return '<div class="pc"><h3>' + esc(s.brand) + '</h3><p class="ad">' + esc(place) + '</p>' +
     '<div class="big" style="' + chipStyle(p) + '"><strong>' + fmt(p) + '</strong><em>' + u + ' · ' + esc(f.label) + '</em><span class="tg">' + tagOf(p) + '</span></div>' +
     (cmp ? '<p class="cmp">' + cmp + '</p>' : '') +
     '<table class="fu">' + rows + '</table>' +
@@ -749,6 +704,13 @@ function openStation(s, go) {
   ring.setLatLng(ll); if (!map.hasLayer(ring)) ring.addTo(map);
   if (isMobile()) setOpen(false);
 }
+
+/* ================== sobre este mapa ================== */
+const about = $('#about');
+$('#aboutBtn').addEventListener('click', () => { about.classList.remove('hidden'); $('#aboutX').focus(); });
+$('#aboutX').addEventListener('click', () => about.classList.add('hidden'));
+about.addEventListener('click', e => { if (e.target === about) about.classList.add('hidden'); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') about.classList.add('hidden'); });
 
 /* ================== panel (móvil) ================== */
 const panel = $('#panel');
@@ -869,7 +831,7 @@ async function reload(manual) {
     if (S.ready) map.closePopup();
     if (S.first) {
       map.fitBounds([[35.9, -9.6], [43.9, 4.6]], {
-        paddingTopLeft: [isMobile() ? 0 : 400, 0], paddingBottomRight: [0, isMobile() ? 130 : 0], animate: false
+        paddingTopLeft: [isMobile() ? 0 : 400, 56], paddingBottomRight: [0, isMobile() ? 130 : 0], animate: false
       });
       S.first = false; S.ready = true;
     }
