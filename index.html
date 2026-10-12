@@ -204,6 +204,23 @@ table.fu tr.sel td{font-weight:800}
 }
 
 
+/* ---------- selector de combustible (solo móvil) ---------- */
+#fuelBtn,#fuelMenu{display:none}
+@media (max-width:760px){
+  .tabs{display:none}
+  #fuelBtn{display:flex;align-items:center;gap:8px;flex:1;min-width:0;height:40px;padding:0 14px;border:0;border-radius:10px;background:#fff;color:#16212c;font-weight:700;font-size:15px}
+  #fuelBtn .lb{flex:1;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #fuelBtn svg{width:18px;height:18px;flex:none;transition:transform .2s}
+  #fuelBtn[aria-expanded=true] svg{transform:rotate(180deg)}
+  #fuelMenu{position:absolute;top:62px;left:8px;right:8px;max-height:min(60vh,420px);overflow:auto;background:#fff;border-radius:14px;box-shadow:0 14px 40px rgba(22,33,44,.35);padding:6px;z-index:1300;overscroll-behavior:contain}
+  #fuelMenu.open{display:block}
+  #fuelMenu button{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:46px;padding:0 12px;border:0;border-radius:10px;background:transparent;text-align:left;font-weight:600;font-size:15px;color:#16212c}
+  #fuelMenu button:hover{background:var(--soft)}
+  #fuelMenu button[aria-checked=true]{background:var(--ink);color:#fff}
+  #fuelMenu button[aria-checked=true]::after{content:"✓";font-weight:800}
+  #fuelMenu hr{border:0;border-top:1px solid var(--line);margin:6px 4px}
+}
+
 /* ---------- contenido editorial y SEO ---------- */
 #app-shell{height:100vh;height:100dvh;min-height:500px;position:relative;isolation:isolate}
 #seoContent{position:relative;background:#fff;color:#16212c;z-index:1;padding:clamp(28px,5vw,64px) 20px 0;line-height:1.7}
@@ -258,6 +275,11 @@ table.fu tr.sel td{font-weight:800}
     <button class="chip" data-fuel="precio gasoleo a" aria-pressed="false">Gasóleo A</button>
     <button class="chip" data-fuel="precio gasoleo premium" aria-pressed="false">Gasóleo premium</button>
   </nav>
+  <button id="fuelBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="fuelMenu">
+    <span class="lb" id="fuelBtnLabel">Gasolina 95</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+  </button>
+  <div id="fuelMenu" role="listbox" aria-label="Tipo de combustible"></div>
   <div class="barR"><span id="upd">Precios de carburantes</span><button id="aboutBtn" type="button">Sobre este mapa</button></div>
 </header>
 <div id="about" class="hidden" role="dialog" aria-modal="true" aria-labelledby="aboutT">
@@ -877,6 +899,8 @@ $('#grab').addEventListener('click', () => setOpen(!panel.classList.contains('op
 
 /* ================== controles ================== */
 function syncControls() {
+  const fl = $('#fuelBtnLabel'); if (fl) fl.textContent = FUEL[S.fuel].label;
+  document.querySelectorAll('#fuelMenu button').forEach(b => b.setAttribute('aria-checked', b.dataset.fuel === S.fuel ? 'true' : 'false'));
   document.querySelectorAll('#chips .chip').forEach(b => b.setAttribute('aria-pressed', b.dataset.fuel === S.fuel ? 'true' : 'false'));
   $('#more').value = MAIN.includes(S.fuel) ? '' : S.fuel;
   $('#prov').value = S.prov; $('#brand').value = S.brand;
@@ -891,9 +915,29 @@ function buildControls() {
     .map(f => '<option value="' + f.id + '">' + esc(f.label) + '</option>').join(''));
   $('#prov').insertAdjacentHTML('beforeend', S.provs.map(p => '<option value="' + esc(p.key) + '">' + esc(p.name) + '</option>').join(''));
   $('#brand').insertAdjacentHTML('beforeend', S.brands.map(b => '<option value="' + esc(b.key) + '">' + esc(b.name) + '</option>').join(''));
+  const avail = FUELS.filter(f => S.stations.some(s => s.prices[f.id] != null));
+  $('#fuelMenu').innerHTML = avail.map((f, i) =>
+    (i === MAIN.length ? '<hr>' : '') +
+    '<button type="button" role="option" data-fuel="' + f.id + '" aria-checked="false">' + esc(f.label) + '</button>'
+  ).join('');
   syncControls();
 }
 document.querySelectorAll('#chips .chip').forEach(b => b.addEventListener('click', () => { S.fuel = b.dataset.fuel; syncControls(); refresh(); }));
+
+/* selector de combustible desplegable (solo visible en móvil) */
+const fuelBtn = $('#fuelBtn'), fuelMenu = $('#fuelMenu');
+function toggleFuelMenu(v) {
+  fuelMenu.classList.toggle('open', v);
+  fuelBtn.setAttribute('aria-expanded', v ? 'true' : 'false');
+}
+fuelBtn.addEventListener('click', e => { e.stopPropagation(); toggleFuelMenu(!fuelMenu.classList.contains('open')); });
+fuelMenu.addEventListener('click', e => {
+  const b = e.target.closest('button[data-fuel]'); if (!b) return;
+  S.fuel = b.dataset.fuel; syncControls(); refresh(); toggleFuelMenu(false);
+});
+document.addEventListener('click', e => { if (!e.target.closest('#fuelMenu, #fuelBtn')) toggleFuelMenu(false); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleFuelMenu(false); });
+
 $('#more').addEventListener('change', e => { if (e.target.value) { S.fuel = e.target.value; syncControls(); refresh(); } });
 $('#prov').addEventListener('change', e => {
   S.prov = e.target.value; refresh();
