@@ -1,0 +1,17 @@
+{
+  "name": "Gasolina barata · Surtidor",
+  "short_name": "Gasolina barata",
+  "description": "Encuentra la gasolinera más barata cerca de ti y compara precios de gasolina y diésel en España.",
+  "lang": "es",
+  "start_url": "./?origen=app",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0fb05c",
+  "theme_color": "#222222",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
